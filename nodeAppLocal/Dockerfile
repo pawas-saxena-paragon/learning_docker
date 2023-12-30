@@ -1,13 +1,16 @@
 FROM node:21-alpine3.18
 
 RUN apk update \
-    && apk upgrade
+    && apk upgrade \
+    && apk add --no-cache bash
 
-RUN mkdir node-starter
+RUN mkdir node-starter && mkdir demo-storage
 
-RUN cd /node-starter && pwd
+USER node
 
 WORKDIR /node-starter
+
+VOLUME /demo-storage
 
 EXPOSE 4000
 
