@@ -1,16 +1,13 @@
 FROM node:21-alpine3.18
 
 RUN apk update \
-    && apk upgrade \
-    && apk search git
+    && apk upgrade
 
-RUN apk add git
+RUN mkdir node-starter
 
-RUN git clone https://github.com/pawas-saxena-paragon/node-starter.git
+RUN cd /node-starter && pwd
 
 WORKDIR /node-starter
-
-RUN npm install
 
 EXPOSE 4000
 
